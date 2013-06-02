@@ -1,0 +1,324 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CE7051C9170BC61C00C13263 /* FileOperatorProxy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE7051C7170BC61C00C13263 /* FileOperatorProxy.cpp */; };
+		CE7051CC170BC6B700C13263 /* FileOperator-Mac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE7051CA170BC6B700C13263 /* FileOperator-Mac.cpp */; };
+		CE7051CF170BC78000C13263 /* FileOperator-Win.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE7051CD170BC78000C13263 /* FileOperator-Win.cpp */; };
+		CE7051D2170BD99400C13263 /* CommonUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE7051D0170BD99400C13263 /* CommonUtils.cpp */; };
+		CE772590170989AD0007BF65 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE77258D1709897C0007BF65 /* Foundation.framework */; };
+		CE7725971709AE5B0007BF65 /* AnimatorPluginInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE7725951709AE5B0007BF65 /* AnimatorPluginInfo.cpp */; };
+		CE77259D1709B2010007BF65 /* AnimatorPluginInitiator+Private.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE77259B1709B2010007BF65 /* AnimatorPluginInitiator+Private.cpp */; };
+		CE7725A01709C3470007BF65 /* AnimatorPluginHooks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE77259E1709C3470007BF65 /* AnimatorPluginHooks.cpp */; };
+		CEAB7AE2170D580500527429 /* DataPacker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEAB7AE0170D580500527429 /* DataPacker.cpp */; };
+		CEAB7AE5170D5B7400527429 /* InitDataPacker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEAB7AE3170D5B7400527429 /* InitDataPacker.cpp */; };
+		CEAB7AE8170D72E100527429 /* AnimDataPacker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEAB7AE6170D72E100527429 /* AnimDataPacker.cpp */; };
+		CEF25E4D170AD09600E84796 /* MacNSStringUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEF25E4B170AD09600E84796 /* MacNSStringUtils.cpp */; };
+		D0FDF9BB09941656008E4F6B /* Projector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0FDF9B709941656008E4F6B /* Projector.cpp */; };
+		D0FDF9BC09941656008E4F6B /* Projector_PiPL.r in Rez */ = {isa = PBXBuildFile; fileRef = D0FDF9B909941656008E4F6B /* Projector_PiPL.r */; };
+		D0FE579D0993C5E500139A60 /* AEGP_SuiteHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0FE579A0993C5E500139A60 /* AEGP_SuiteHandler.cpp */; };
+		D0FE579E0993C5E500139A60 /* MissingSuiteError.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0FE579C0993C5E500139A60 /* MissingSuiteError.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7E606FC1137B551B00F59ABC /* Projector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Projector.h; path = ../Projector.h; sourceTree = SOURCE_ROOT; };
+		7E8713E7137B6D1000823AA9 /* AEConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AEConfig.h; path = ../../../Headers/AEConfig.h; sourceTree = SOURCE_ROOT; };
+		7E8713E8137B6D2800823AA9 /* AE_GeneralPlug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AE_GeneralPlug.h; path = ../../../Headers/AE_GeneralPlug.h; sourceTree = SOURCE_ROOT; };
+		C4E618CC095A3CE80012CA3F /* Projector.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Projector.plugin; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE7051C5170BC53500C13263 /* IFileOperator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFileOperator.h; sourceTree = "<group>"; };
+		CE7051C7170BC61C00C13263 /* FileOperatorProxy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FileOperatorProxy.cpp; sourceTree = "<group>"; };
+		CE7051C8170BC61C00C13263 /* FileOperatorProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileOperatorProxy.h; sourceTree = "<group>"; };
+		CE7051CA170BC6B700C13263 /* FileOperator-Mac.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "FileOperator-Mac.cpp"; sourceTree = "<group>"; };
+		CE7051CB170BC6B700C13263 /* FileOperator-Mac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FileOperator-Mac.h"; sourceTree = "<group>"; };
+		CE7051CD170BC78000C13263 /* FileOperator-Win.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "FileOperator-Win.cpp"; sourceTree = "<group>"; };
+		CE7051CE170BC78000C13263 /* FileOperator-Win.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FileOperator-Win.h"; sourceTree = "<group>"; };
+		CE7051D0170BD99400C13263 /* CommonUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CommonUtils.cpp; sourceTree = "<group>"; };
+		CE7051D1170BD99400C13263 /* CommonUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtils.h; sourceTree = "<group>"; };
+		CE77258D1709897C0007BF65 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		CE7725951709AE5B0007BF65 /* AnimatorPluginInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatorPluginInfo.cpp; sourceTree = "<group>"; };
+		CE7725961709AE5B0007BF65 /* AnimatorPluginInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatorPluginInfo.h; sourceTree = "<group>"; };
+		CE77259B1709B2010007BF65 /* AnimatorPluginInitiator+Private.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "AnimatorPluginInitiator+Private.cpp"; sourceTree = "<group>"; };
+		CE77259C1709B2010007BF65 /* AnimatorPluginInitiator+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AnimatorPluginInitiator+Private.h"; sourceTree = "<group>"; };
+		CE77259E1709C3470007BF65 /* AnimatorPluginHooks.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatorPluginHooks.cpp; sourceTree = "<group>"; };
+		CE77259F1709C3470007BF65 /* AnimatorPluginHooks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatorPluginHooks.h; sourceTree = "<group>"; };
+		CEAB7AE0170D580500527429 /* DataPacker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DataPacker.cpp; sourceTree = "<group>"; };
+		CEAB7AE1170D580500527429 /* DataPacker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataPacker.h; sourceTree = "<group>"; };
+		CEAB7AE3170D5B7400527429 /* InitDataPacker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InitDataPacker.cpp; sourceTree = "<group>"; };
+		CEAB7AE4170D5B7400527429 /* InitDataPacker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitDataPacker.h; sourceTree = "<group>"; };
+		CEAB7AE6170D72E100527429 /* AnimDataPacker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimDataPacker.cpp; sourceTree = "<group>"; };
+		CEAB7AE7170D72E100527429 /* AnimDataPacker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimDataPacker.h; sourceTree = "<group>"; };
+		CEF25E4B170AD09600E84796 /* MacNSStringUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MacNSStringUtils.cpp; sourceTree = "<group>"; };
+		CEF25E4C170AD09600E84796 /* MacNSStringUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacNSStringUtils.h; sourceTree = "<group>"; };
+		D0FDF9B709941656008E4F6B /* Projector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Projector.cpp; path = ../Projector.cpp; sourceTree = SOURCE_ROOT; };
+		D0FDF9B909941656008E4F6B /* Projector_PiPL.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Projector_PiPL.r; path = ../Projector_PiPL.r; sourceTree = SOURCE_ROOT; };
+		D0FE579A0993C5E500139A60 /* AEGP_SuiteHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = AEGP_SuiteHandler.cpp; path = ../../../Util/AEGP_SuiteHandler.cpp; sourceTree = SOURCE_ROOT; };
+		D0FE579B0993C5E500139A60 /* AEGP_SuiteHandler.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AEGP_SuiteHandler.h; path = ../../../Util/AEGP_SuiteHandler.h; sourceTree = SOURCE_ROOT; };
+		D0FE579C0993C5E500139A60 /* MissingSuiteError.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = MissingSuiteError.cpp; path = ../../../Util/MissingSuiteError.cpp; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C4E618CA095A3CE80012CA3F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE772590170989AD0007BF65 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C4E6187C095A3C800012CA3F = {
+			isa = PBXGroup;
+			children = (
+				7E606FC1137B551B00F59ABC /* Projector.h */,
+				D0FDF9B709941656008E4F6B /* Projector.cpp */,
+				D0FDF9B909941656008E4F6B /* Projector_PiPL.r */,
+				CE7725911709ADF90007BF65 /* Classes */,
+				D0FE57630993C4FD00139A60 /* Supporting Code */,
+				CE77258F1709898C0007BF65 /* Frameworks */,
+				C4E6188C095A3C800012CA3F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C4E6188C095A3C800012CA3F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C4E618CC095A3CE80012CA3F /* Projector.plugin */,
+			);
+			name = Products;
+			sourceTree = SOURCE_ROOT;
+		};
+		CE77258F1709898C0007BF65 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE77258D1709897C0007BF65 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CE7725911709ADF90007BF65 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				CEAB7ADF170D57BA00527429 /* Mac */,
+				CE7725951709AE5B0007BF65 /* AnimatorPluginInfo.cpp */,
+				CE7725961709AE5B0007BF65 /* AnimatorPluginInfo.h */,
+				CE77259B1709B2010007BF65 /* AnimatorPluginInitiator+Private.cpp */,
+				CE77259C1709B2010007BF65 /* AnimatorPluginInitiator+Private.h */,
+				CE77259E1709C3470007BF65 /* AnimatorPluginHooks.cpp */,
+				CE77259F1709C3470007BF65 /* AnimatorPluginHooks.h */,
+				CEF25E4B170AD09600E84796 /* MacNSStringUtils.cpp */,
+				CEF25E4C170AD09600E84796 /* MacNSStringUtils.h */,
+				CE7051D0170BD99400C13263 /* CommonUtils.cpp */,
+				CE7051D1170BD99400C13263 /* CommonUtils.h */,
+				CE7051C5170BC53500C13263 /* IFileOperator.h */,
+				CE7051C7170BC61C00C13263 /* FileOperatorProxy.cpp */,
+				CE7051C8170BC61C00C13263 /* FileOperatorProxy.h */,
+				CE7051CA170BC6B700C13263 /* FileOperator-Mac.cpp */,
+				CE7051CB170BC6B700C13263 /* FileOperator-Mac.h */,
+				CE7051CD170BC78000C13263 /* FileOperator-Win.cpp */,
+				CE7051CE170BC78000C13263 /* FileOperator-Win.h */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		CEAB7ADF170D57BA00527429 /* Mac */ = {
+			isa = PBXGroup;
+			children = (
+				CEAB7AE0170D580500527429 /* DataPacker.cpp */,
+				CEAB7AE1170D580500527429 /* DataPacker.h */,
+				CEAB7AE3170D5B7400527429 /* InitDataPacker.cpp */,
+				CEAB7AE4170D5B7400527429 /* InitDataPacker.h */,
+				CEAB7AE6170D72E100527429 /* AnimDataPacker.cpp */,
+				CEAB7AE7170D72E100527429 /* AnimDataPacker.h */,
+			);
+			path = Mac;
+			sourceTree = "<group>";
+		};
+		D0FE57630993C4FD00139A60 /* Supporting Code */ = {
+			isa = PBXGroup;
+			children = (
+				7E8713E8137B6D2800823AA9 /* AE_GeneralPlug.h */,
+				7E8713E7137B6D1000823AA9 /* AEConfig.h */,
+				D0FE579A0993C5E500139A60 /* AEGP_SuiteHandler.cpp */,
+				D0FE579B0993C5E500139A60 /* AEGP_SuiteHandler.h */,
+				D0FE579C0993C5E500139A60 /* MissingSuiteError.cpp */,
+			);
+			name = "Supporting Code";
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C4E618CB095A3CE80012CA3F /* Projector */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C4E618CE095A3CE90012CA3F /* Build configuration list for PBXNativeTarget "Projector" */;
+			buildPhases = (
+				C4E618C9095A3CE80012CA3F /* Sources */,
+				C4E618CA095A3CE80012CA3F /* Frameworks */,
+				C4E618EA095A3E040012CA3F /* Rez */,
+				D0445653099417B00073E055 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Projector;
+			productName = Projector.plugin;
+			productReference = C4E618CC095A3CE80012CA3F /* Projector.plugin */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C4E6187E095A3C800012CA3F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+			};
+			buildConfigurationList = C4E6187F095A3C800012CA3F /* Build configuration list for PBXProject "Projector" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = C4E6187C095A3C800012CA3F;
+			productRefGroup = C4E6188C095A3C800012CA3F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C4E618CB095A3CE80012CA3F /* Projector */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D0445653099417B00073E055 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXRezBuildPhase section */
+		C4E618EA095A3E040012CA3F /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0FDF9BC09941656008E4F6B /* Projector_PiPL.r in Rez */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXRezBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C4E618C9095A3CE80012CA3F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0FE579D0993C5E500139A60 /* AEGP_SuiteHandler.cpp in Sources */,
+				D0FE579E0993C5E500139A60 /* MissingSuiteError.cpp in Sources */,
+				D0FDF9BB09941656008E4F6B /* Projector.cpp in Sources */,
+				CE7725971709AE5B0007BF65 /* AnimatorPluginInfo.cpp in Sources */,
+				CE77259D1709B2010007BF65 /* AnimatorPluginInitiator+Private.cpp in Sources */,
+				CE7725A01709C3470007BF65 /* AnimatorPluginHooks.cpp in Sources */,
+				CEF25E4D170AD09600E84796 /* MacNSStringUtils.cpp in Sources */,
+				CE7051C9170BC61C00C13263 /* FileOperatorProxy.cpp in Sources */,
+				CE7051CC170BC6B700C13263 /* FileOperator-Mac.cpp in Sources */,
+				CE7051CF170BC78000C13263 /* FileOperator-Win.cpp in Sources */,
+				CE7051D2170BD99400C13263 /* CommonUtils.cpp in Sources */,
+				CEAB7AE2170D580500527429 /* DataPacker.cpp in Sources */,
+				CEAB7AE5170D5B7400527429 /* InitDataPacker.cpp in Sources */,
+				CEAB7AE8170D72E100527429 /* AnimDataPacker.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C4E61880095A3C800012CA3F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
+				GCC_MODEL_TUNING = "";
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_REUSE_STRINGS = NO;
+				GCC_THREADSAFE_STATICS = NO;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
+				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = NO;
+				GCC_WARN_MISSING_PARENTHESES = YES;
+				GCC_WARN_SHADOW = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					../../../Headers,
+					../../../Util,
+					../../../Headers/SP,
+					../../../Resources,
+				);
+				REZ_PREPROCESSOR_DEFINITIONS = __MACH__;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+				STRIP_INSTALLED_PRODUCT = NO;
+			};
+			name = Debug;
+		};
+		C4E618CF095A3CE90012CA3F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				GENERATE_PKGINFO_FILE = YES;
+				INFOPLIST_FILE = "Projector.plugin-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				LINK_WITH_STANDARD_LIBRARIES = YES;
+				PRODUCT_NAME = Projector;
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = plugin;
+				ZERO_LINK = NO;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C4E6187F095A3C800012CA3F /* Build configuration list for PBXProject "Projector" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C4E61880095A3C800012CA3F /* Debug */,
+			);
+			defaultConfigurationIsVisible = 1;
+			defaultConfigurationName = Debug;
+		};
+		C4E618CE095A3CE90012CA3F /* Build configuration list for PBXNativeTarget "Projector" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C4E618CF095A3CE90012CA3F /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C4E6187E095A3C800012CA3F /* Project object */;
+}

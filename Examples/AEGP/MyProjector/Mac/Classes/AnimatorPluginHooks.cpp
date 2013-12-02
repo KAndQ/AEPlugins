@@ -23,26 +23,32 @@ A_Err animatorPlugin_CommandHook(AEGP_GlobalRefcon		plugin_refconPV,
 	
 	*handledPB = FALSE;
 	
+	FileOperatorProxy fileOperator;
+	
 	if (AnimatorPluginInfo::shared()->getCommandID() == command)
 	{
 		*handledPB = TRUE;
-		
-		FileOperatorProxy fileOperator;
 		fileOperator.saveAnimationData(false);
 	}
 	else if (AnimatorPluginInfo::shared()->getForeverCommandID() == command)
 	{
 		*handledPB = TRUE;
-		
-		FileOperatorProxy fileOperator;
 		fileOperator.saveAnimationData(true);
 	}
 	else if (AnimatorPluginInfo::shared()->getMoudleCommandID() == command)
 	{
 		*handledPB = TRUE;
-		
-		FileOperatorProxy fileOperator;
 		fileOperator.saveMoudleData();
+	}
+	else if (AnimatorPluginInfo::shared()->getBatchCommandID() == command)
+	{
+		*handledPB = TRUE;
+		fileOperator.saveAllData(false);
+	}
+	else if (AnimatorPluginInfo::shared()->getBatchForeverCommandID() == command)
+	{
+		*handledPB = TRUE;
+		fileOperator.saveAllData(true);
 	}
 	
 	return err;
@@ -73,10 +79,14 @@ A_Err animatorPlugin_UpdateMenuHook(AEGP_GlobalRefcon			plugin_refconPV,
 	if (info->getActiveCompH() != NULL)
 	{
 		suites.CommandSuite1()->AEGP_EnableCommand(info->getMoudleCommandID());
+		suites.CommandSuite1()->AEGP_EnableCommand(info->getBatchCommandID());
+		suites.CommandSuite1()->AEGP_EnableCommand(info->getBatchForeverCommandID());
 	}
 	else
 	{
 		suites.CommandSuite1()->AEGP_DisableCommand(info->getMoudleCommandID());
+		suites.CommandSuite1()->AEGP_DisableCommand(info->getBatchCommandID());
+		suites.CommandSuite1()->AEGP_DisableCommand(info->getBatchForeverCommandID());
 	}
 	
 	info->printInfomation();

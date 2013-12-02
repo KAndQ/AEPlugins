@@ -28,6 +28,7 @@ public:
 	
 	void saveAnimationData(bool forever);
 	void saveMoudleData();
+	void saveAllData(bool forever);
 };
 
 #endif // AE_OS_WIN

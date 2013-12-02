@@ -38,4 +38,9 @@ void FileOperatorProxy::saveMoudleData()
 	m_operator->saveMoudleData();
 }
 
+void FileOperatorProxy::saveAllData(bool forever)
+{
+	m_operator->saveAllData(forever);
+}
+
 

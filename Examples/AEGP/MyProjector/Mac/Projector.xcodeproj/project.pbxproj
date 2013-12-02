@@ -179,7 +179,7 @@
 		C4E6187E095A3C800012CA3F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0500;
 			};
 			buildConfigurationList = C4E6187F095A3C800012CA3F /* Build configuration list for PBXProject "Projector" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -250,7 +250,6 @@
 		C4E61880095A3C800012CA3F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COPY_PHASE_STRIP = NO;
 				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				GCC_MODEL_TUNING = "";
@@ -275,6 +274,7 @@
 					../../../Headers/SP,
 					../../../Resources,
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				REZ_PREPROCESSOR_DEFINITIONS = __MACH__;
 				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
 				STRIP_INSTALLED_PRODUCT = NO;

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>406947A1-A4A8-4784-AF3A-5331EC38F458</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Projector</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>71718124-186A-4068-A232-29ED4219CB40</key>
+		<string>https://github.com/KAndQ/AEPlugins.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Examples/AEGP/Projector/Mac/Projector.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>71718124-186A-4068-A232-29ED4219CB40</key>
+		<string>../../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/KAndQ/AEPlugins.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>71718124-186A-4068-A232-29ED4219CB40</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>71718124-186A-4068-A232-29ED4219CB40</string>
+			<key>IDESourceControlWCCName</key>
+			<string>AEPlugins</string>
+		</dict>
+	</array>
+</dict>
+</plist>

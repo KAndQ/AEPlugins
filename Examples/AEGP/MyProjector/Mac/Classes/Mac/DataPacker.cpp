@@ -18,11 +18,11 @@ DataPacker::~DataPacker()
 	m_packer = NULL;
 }
 
-void DataPacker::pack()
+void DataPacker::pack(AEGP_LayerH layer)
 {
-	if (m_packer != NULL)
+	if (m_packer != NULL && layer != NULL)
 	{
-		m_packer->pack();
+		m_packer->pack(layer);
 	}
 }
 

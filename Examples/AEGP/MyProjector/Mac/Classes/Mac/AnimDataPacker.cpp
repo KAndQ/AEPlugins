@@ -91,14 +91,14 @@ AnimDataPacker::~AnimDataPacker()
 	[m_dict release], m_dict = nil;
 }
 
-void AnimDataAnchorPointPacker::pack()
+void AnimDataAnchorPointPacker::pack(AEGP_LayerH layer)
 {
-	DataPacker::pack();
+	DataPacker::pack(layer);
 	
 	AEGP_TwoDVal * pTwoVals = NULL;
 	float * pTimes = NULL;
 	A_long numkfs = 0;
-	obtainKeyframesAnchorPointDataWithPercent(&pTwoVals, &pTimes, &numkfs);
+	obtainKeyframesAnchorPointDataWithPercent(layer, &pTwoVals, &pTimes, &numkfs);
 	
 	// 没有动画则直接返回, 解析的时候直接判断如果 key AnchorPoint 返回的值是 nil 则表示没有动画
 	if (numkfs == 0)
@@ -109,7 +109,7 @@ void AnimDataAnchorPointPacker::pack()
 	// 创建 AnchorPoint 类型动画
 	NSMutableDictionary * animDict = createAnimDict(m_dict, @"AnchorPoint", m_forever);
 	
-	// 如果只有一帧, 那么则直接定义其动画
+	// 如果只有一帧, 那么则直接定义其动画, 而不使用 CCSequence
 	if (numkfs == 1)
 	{
 		packAnchorPointTo(pTwoVals, pTimes, 0, animDict);
@@ -132,14 +132,14 @@ void AnimDataAnchorPointPacker::pack()
 	[animDict release], animDict = nil;
 }
 
-void AnimDataPositionPacker::pack()
+void AnimDataPositionPacker::pack(AEGP_LayerH layer)
 {
-	DataPacker::pack();
+	DataPacker::pack(layer);
 	
 	AEGP_TwoDVal * pTwoVals = NULL;
 	float * pTimes = NULL;
 	A_long numkfs = 0;
-	obtainKeyframesPositionData(&pTwoVals, &pTimes, &numkfs);
+	obtainKeyframesPositionData(layer, &pTwoVals, &pTimes, &numkfs);
 	
 	if (numkfs == 0)
 	{
@@ -170,14 +170,14 @@ void AnimDataPositionPacker::pack()
 	[animDict release], animDict = nil;
 }
 
-void AnimDataScalePacker::pack()
+void AnimDataScalePacker::pack(AEGP_LayerH layer)
 {
-	DataPacker::pack();
+	DataPacker::pack(layer);
 	
 	AEGP_TwoDVal * pTwoVals = NULL;
 	float * pTimes = NULL;
 	A_long numkfs = 0;
-	obtainKeyframesScaleData(&pTwoVals, &pTimes, &numkfs);
+	obtainKeyframesScaleData(layer, &pTwoVals, &pTimes, &numkfs);
 	
 	if (numkfs == 0)
 	{
@@ -208,14 +208,14 @@ void AnimDataScalePacker::pack()
 	[animDict release], animDict = nil;
 }
 
-void AnimDataRotationPacker::pack()
+void AnimDataRotationPacker::pack(AEGP_LayerH layer)
 {
-	DataPacker::pack();
+	DataPacker::pack(layer);
 	
 	AEGP_OneDVal * pOneVals = NULL;
 	float * pTimes = NULL;
 	A_long numkfs = 0;
-	obtainKeyframesRotationData(&pOneVals, &pTimes, &numkfs);
+	obtainKeyframesRotationData(layer, &pOneVals, &pTimes, &numkfs);
 	
 	if (numkfs == 0)
 	{
@@ -246,14 +246,14 @@ void AnimDataRotationPacker::pack()
 	[animDict release], animDict = nil;
 }
 
-void AnimDataOpacityPacker::pack()
+void AnimDataOpacityPacker::pack(AEGP_LayerH layer)
 {
-	DataPacker::pack();
+	DataPacker::pack(layer);
 	
 	AEGP_OneDVal * pOneVals = NULL;
 	float * pTimes = NULL;
 	A_long numkfs = 0;
-	obtainKeyframesOpacityData(&pOneVals, &pTimes, &numkfs);
+	obtainKeyframesOpacityData(layer, &pOneVals, &pTimes, &numkfs);
 	
 	if (numkfs == 0)
 	{

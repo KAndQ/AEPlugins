@@ -25,6 +25,7 @@ public:
 	
 	virtual void saveAnimationData(bool forever);
 	virtual void saveMoudleData();
+	virtual void saveAllData(bool forever);
 	
 private:
 	

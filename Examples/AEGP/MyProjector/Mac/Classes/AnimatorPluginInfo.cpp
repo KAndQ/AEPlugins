@@ -32,24 +32,7 @@ AnimatorPluginInfo::AnimatorPluginInfo()
 
 A_UTF16Char * AnimatorPluginInfo::getActiveLayerName()
 {
-	A_Err err = A_Err_NONE;
-	AEGP_SuiteHandler suites(m_basicSuite);
-	AEGP_LayerH layerH = getActiveLayerH();
-	if (layerH == NULL)
-	{
-		A_UTF16Char * value = new A_UTF16Char[1];
-		memset(value, 0, sizeof(A_UTF16Char));
-		return value;
-	}
-	
-	AEGP_MemHandle memLayerNameHandle = NULL;
-	AEGP_MemHandle memSourceNameHandle = NULL;
-	ERR(suites.LayerSuite7()->AEGP_GetLayerName(m_pluginID, layerH, &memLayerNameHandle, &memSourceNameHandle));
-	A_UTF16Char * layerName = UTF16CharDuplicate(suites.MemorySuite1(), memLayerNameHandle);
-	ERR(suites.MemorySuite1()->AEGP_FreeMemHandle(memLayerNameHandle));
-	ERR(suites.MemorySuite1()->AEGP_FreeMemHandle(memSourceNameHandle));
-	
-	return layerName;
+	return obtainLayerName(getActiveLayerH());
 }
 
 A_long AnimatorPluginInfo::getActiveLayerIndex()
@@ -99,8 +82,8 @@ void AnimatorPluginInfo::printInfomation()
 	
 	NSString * strPath = NSStringFromA_UTF16Char(utf16Path);
 	NSString * strLayerName = NSStringFromA_UTF16Char(layerName);
-	NSLog(@"PluginID:%u, CommandID:%u, ProjPath:%@, LayerName:%@",
-		  getPluginID(), getCommandID(), strPath.length == 0 ? @"NULL" : strPath, strLayerName.length == 0 ? @"NULL" : strLayerName);
+	NSLog(@"PluginID:%u, ProjPath:%@, LayerName:%@",
+		  getPluginID(), strPath.length == 0 ? @"NULL" : strPath, strLayerName.length == 0 ? @"NULL" : strLayerName);
 	
 	// 测试打印帧信息
 	A_Err err = A_Err_NONE;

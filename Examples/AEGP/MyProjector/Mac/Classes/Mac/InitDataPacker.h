@@ -41,7 +41,7 @@ class InitDataAnchorPointPacker : public InitDataPacker
 {
 public:
 	InitDataAnchorPointPacker(DataPacker * packer, NSMutableDictionary * dict) : InitDataPacker(packer, dict) {};
-	void pack();
+	void pack(AEGP_LayerH layer);
 };
 
 /**
@@ -52,7 +52,7 @@ class InitDataPositionPacker : public InitDataPacker
 {
 public:
 	InitDataPositionPacker(DataPacker * packer, NSMutableDictionary * dict) : InitDataPacker(packer, dict) {};
-	void pack();
+	void pack(AEGP_LayerH layer);
 };
 
 /**
@@ -63,7 +63,7 @@ class InitDataScalePacker : public InitDataPacker
 {
 public:
 	InitDataScalePacker(DataPacker * packer, NSMutableDictionary * dict) : InitDataPacker(packer, dict) {};
-	void pack();
+	void pack(AEGP_LayerH layer);
 };
 
 /**
@@ -74,7 +74,7 @@ class InitDataRotationPacker : public InitDataPacker
 {
 public:
 	InitDataRotationPacker(DataPacker * packer, NSMutableDictionary * dict) : InitDataPacker(packer, dict) {};
-	void pack();
+	void pack(AEGP_LayerH layer);
 };
 
 /**
@@ -85,7 +85,17 @@ class InitDataOpacityPacker : public InitDataPacker
 {
 public:
 	InitDataOpacityPacker(DataPacker * packer, NSMutableDictionary * dict) : InitDataPacker(packer, dict) {};
-	void pack();
+	void pack(AEGP_LayerH layer);
+};
+
+/**
+ * 包装 ZOrder 数据
+ */
+class InitDataZOrderPacker : public InitDataPacker
+{
+public:
+	InitDataZOrderPacker(DataPacker * packer, NSMutableDictionary * dict) : InitDataPacker(packer, dict) {};
+	void pack(AEGP_LayerH layer);
 };
 
 #endif /* defined(__Projector__InitDataPacker__) */

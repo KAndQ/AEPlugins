@@ -35,6 +35,12 @@ public:
 	/// Export Forever File 命令菜单 ID
 	AEGP_Command			getForeverCommandID() const { return m_foreverCommandID; }
 	
+	/// Batch export Animator File + Moudle File
+	AEGP_Command			getBatchCommandID() const { return m_batchCommandID; }
+	
+	/// Batch export Forever Animatior File + Module File
+	AEGP_Command			getBatchForeverCommandID() const { return m_batchForeverCommandID; }
+	
 	/// Export Moudle File 命令菜单 ID
 	AEGP_Command			getMoudleCommandID() const { return m_moudleCommandID; }
 	
@@ -71,6 +77,8 @@ private:
 	
 	AEGP_Command			m_commandID;
 	AEGP_Command			m_foreverCommandID;
+	AEGP_Command			m_batchCommandID;
+	AEGP_Command			m_batchForeverCommandID;
 	AEGP_Command			m_moudleCommandID;
 	AEGP_PluginID			m_pluginID;
 	SPBasicSuite *			m_basicSuite;

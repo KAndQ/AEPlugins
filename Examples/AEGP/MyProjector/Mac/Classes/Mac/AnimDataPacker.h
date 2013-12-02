@@ -42,7 +42,7 @@ class AnimDataAnchorPointPacker : public AnimDataPacker
 {
 public:
 	AnimDataAnchorPointPacker(DataPacker * packer, NSMutableDictionary * dict, bool forever) : AnimDataPacker(packer, dict, forever) {};
-	void pack();
+	void pack(AEGP_LayerH layer);
 };
 
 /**
@@ -53,7 +53,7 @@ class AnimDataPositionPacker : public AnimDataPacker
 {
 public:
 	AnimDataPositionPacker(DataPacker * packer, NSMutableDictionary * dict, bool forever) : AnimDataPacker(packer, dict, forever) {};
-	void pack();
+	void pack(AEGP_LayerH layer);
 };
 
 /**
@@ -64,7 +64,7 @@ class AnimDataScalePacker : public AnimDataPacker
 {
 public:
 	AnimDataScalePacker(DataPacker * packer, NSMutableDictionary * dict, bool forever) : AnimDataPacker(packer, dict, forever) {};
-	void pack();
+	void pack(AEGP_LayerH layer);
 };
 
 /**
@@ -75,7 +75,7 @@ class AnimDataRotationPacker : public AnimDataPacker
 {
 public:
 	AnimDataRotationPacker(DataPacker * packer, NSMutableDictionary * dict, bool forever) : AnimDataPacker(packer, dict, forever) {};
-	void pack();
+	void pack(AEGP_LayerH layer);
 };
 
 /**
@@ -86,7 +86,7 @@ class AnimDataOpacityPacker : public AnimDataPacker
 {
 public:
 	AnimDataOpacityPacker(DataPacker * packer, NSMutableDictionary * dict, bool forever) : AnimDataPacker(packer, dict, forever) {};
-	void pack();
+	void pack(AEGP_LayerH layer);
 };
 
 #endif /* defined(__Projector__AnimDataPacker__) */

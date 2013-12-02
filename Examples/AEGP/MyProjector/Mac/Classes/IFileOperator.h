@@ -28,6 +28,9 @@ public:
 	
 	/// 存储 Moudle 数据
 	virtual void saveMoudleData() = 0;
+	
+	/// 存储当前 Composition 的所有数据
+	virtual void saveAllData(bool forever) = 0;
 };
 
 #endif /* defined(__Projector__IFileOperator__) */

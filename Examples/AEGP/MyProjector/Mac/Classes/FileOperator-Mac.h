@@ -27,6 +27,16 @@ public:
 	
 	void saveAnimationData(bool forever);
 	void saveMoudleData();
+	void saveAllData(bool forever);
+	
+private:
+	
+	/**
+	 * 存储图层的数据
+	 * @param layer 图层
+	 * @param forever 动画类型是否循环
+	 */
+	void saveAnimationData(AEGP_LayerH layer, bool forever);
 };
 
 #endif // AE_OS_MAC

@@ -46,6 +46,14 @@ void AnimatorPluginInitiator::initialize(struct SPBasicSuite *	pica_basicP,
 	ERR(suites.CommandSuite1()->AEGP_InsertMenuCommand(info->m_moudleCommandID, "Export Moudle File", AEGP_Menu_FILE, AEGP_MENU_INSERT_AT_BOTTOM));
 	ERR(suites.RegisterSuite5()->AEGP_RegisterCommandHook(info->m_pluginID, AEGP_HP_BeforeAE, info->m_moudleCommandID, animatorPlugin_CommandHook, NULL));
 	
+	ERR(suites.CommandSuite1()->AEGP_GetUniqueCommand(&info->m_batchCommandID));
+	ERR(suites.CommandSuite1()->AEGP_InsertMenuCommand(info->m_batchCommandID, "Batch Export File", AEGP_Menu_FILE, AEGP_MENU_INSERT_AT_BOTTOM));
+	ERR(suites.RegisterSuite5()->AEGP_RegisterCommandHook(info->m_pluginID, AEGP_HP_BeforeAE, info->m_batchCommandID, animatorPlugin_CommandHook, NULL));
+	
+	ERR(suites.CommandSuite1()->AEGP_GetUniqueCommand(&info->m_batchForeverCommandID));
+	ERR(suites.CommandSuite1()->AEGP_InsertMenuCommand(info->m_batchForeverCommandID, "Batch Export Forever File", AEGP_Menu_FILE, AEGP_MENU_INSERT_AT_BOTTOM));
+	ERR(suites.RegisterSuite5()->AEGP_RegisterCommandHook(info->m_pluginID, AEGP_HP_BeforeAE, info->m_batchForeverCommandID, animatorPlugin_CommandHook, NULL));
+	
 	info->printInfomation();
 }
 

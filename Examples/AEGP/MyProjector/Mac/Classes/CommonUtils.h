@@ -21,7 +21,7 @@ extern float obtainDurationInSecond(A_Time time);
 extern float obtainFrameratePerSecond(A_Time time);
 
 /// 获得 Layer 对应的资源大小, 如果没有当前没有选中 layer, 则  *pWidth, *pHeight 都为 0
-extern void obtainSourceItemDimensions(A_long * pWidth, A_long * pHeight);
+extern void obtainSourceItemDimensions(AEGP_LayerH layer, A_long * pWidth, A_long * pHeight);
 
 /// 获得 Composition 的 width 和 height
 extern void obtainCompositionItemDimensions(A_long * pWidth, A_long * pHeight);

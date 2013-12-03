@@ -89,7 +89,7 @@ A_Err animatorPlugin_UpdateMenuHook(AEGP_GlobalRefcon			plugin_refconPV,
 		suites.CommandSuite1()->AEGP_DisableCommand(info->getBatchForeverCommandID());
 	}
 	
-	info->printInfomation();
+	// info->printInfomation();
 	
 	return err;
 }

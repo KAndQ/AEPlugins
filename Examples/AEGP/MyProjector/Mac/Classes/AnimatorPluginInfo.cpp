@@ -98,7 +98,7 @@ void AnimatorPluginInfo::printInfomation()
 		NSLog(@"---- test width: %u, test height: %u ----", width, height);
 		
 		// 资源信息
-		obtainSourceItemDimensions(&width, &height);
+		obtainSourceItemDimensions(layerH, &width, &height);
 		NSLog(@"---- source width: %u, source height: %u ----", width, height);
 		
 		// 帧信息

@@ -96,7 +96,7 @@ void obtainInitAnchorPointData(AEGP_LayerH layerH, AEGP_TwoDVal * pValue)
 	
 #ifdef REVERSE_COOR_Y
 	A_long width, height;
-	obtainSourceItemDimensions(&width, &height);
+	obtainSourceItemDimensions(layerH, &width, &height);
 	pValue->y = height - streamVal2.two_d.y;
 #else
 	pValue->y = streamVal2.two_d.y;
@@ -109,7 +109,7 @@ void obtainInitAnchorPointDataWithPercent(AEGP_LayerH layerH, AEGP_TwoDVal * pVa
 	obtainInitAnchorPointData(layerH, &anchorPoint);
 	
 	A_long width, height;
-	obtainSourceItemDimensions(&width, &height);
+	obtainSourceItemDimensions(layerH, &width, &height);
 	pValue->x = anchorPoint.x / width;
 	pValue->y = anchorPoint.y / height;
 }
@@ -205,15 +205,14 @@ float obtainFrameratePerSecond(A_Time time)
 	return (float)time.scale / 1000.0f;
 }
 
-void obtainSourceItemDimensions(A_long * pWidth, A_long * pHeight)
+void obtainSourceItemDimensions(AEGP_LayerH layer, A_long * pWidth, A_long * pHeight)
 {
 	AEGP_SuiteHandler suites(AnimatorPluginInfo::shared()->getBasicSuite());
-	AEGP_LayerH layerH = AnimatorPluginInfo::shared()->getActiveLayerH();
-	if (layerH != NULL)
+	if (layer != NULL)
 	{
 		A_Err err = A_Err_NONE;
 		AEGP_ItemH sourceItemH;
-		ERR(suites.LayerSuite7()->AEGP_GetLayerSourceItem(layerH, &sourceItemH));
+		ERR(suites.LayerSuite7()->AEGP_GetLayerSourceItem(layer, &sourceItemH));
 		ERR(suites.ItemSuite8()->AEGP_GetItemDimensions(sourceItemH, pWidth, pHeight));
 	}
 	else
@@ -306,7 +305,7 @@ void obtainKeyframesAnchorPointData(AEGP_LayerH layer, AEGP_TwoDVal ** ppValues,
 	
 #ifdef REVERSE_COOR_Y
 	A_long width, height;
-	obtainSourceItemDimensions(&width, &height);
+	obtainSourceItemDimensions(layer, &width, &height);
 #endif // REVERSE_COOR_Y
 	
 	AEGP_TwoDVal * pTwoVals = new AEGP_TwoDVal[*pNumkfs];
@@ -327,7 +326,7 @@ void obtainKeyframesAnchorPointData(AEGP_LayerH layer, AEGP_TwoDVal ** ppValues,
 void obtainKeyframesAnchorPointDataWithPercent(AEGP_LayerH layer, AEGP_TwoDVal ** ppValues, float ** ppTimes, A_long * pNumkfs)
 {
 	A_long width, height;
-	obtainSourceItemDimensions(&width, &height);
+	obtainSourceItemDimensions(layer, &width, &height);
 	
 	obtainKeyframesAnchorPointData(layer, ppValues, ppTimes, pNumkfs);
 	for (A_long i = 0; i < *pNumkfs; ++i)

@@ -210,8 +210,13 @@ AEGP_CompH AnimatorPluginInfo::getActiveCompH()
 	{
 		A_Err err = A_Err_NONE;
 		AEGP_CompH compH;
-		ERR(suites.CompSuite9()->AEGP_GetCompFromItem(itemH, &compH));
-		return compH;
+		AEGP_ItemType itemType;
+		ERR(suites.ItemSuite8()->AEGP_GetItemType(itemH, &itemType));
+		if (itemType == AEGP_ItemType_COMP)
+		{
+			ERR(suites.CompSuite9()->AEGP_GetCompFromItem(itemH, &compH));
+			return compH;
+		}
 	}
 	
 	return NULL;

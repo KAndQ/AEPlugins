@@ -62,18 +62,15 @@ A_Err animatorPlugin_UpdateMenuHook(AEGP_GlobalRefcon			plugin_refconPV,
 	AnimatorPluginInfo * info = AnimatorPluginInfo::shared();
 	AEGP_SuiteHandler suites(info->getBasicSuite());
 	
-	if (info->getCommandID() != 0)
+	if (info->getActiveLayerIndex() != -1)
 	{
-		if (info->getActiveLayerIndex() != -1)
-		{
-			suites.CommandSuite1()->AEGP_EnableCommand(info->getCommandID());
-			suites.CommandSuite1()->AEGP_EnableCommand(info->getForeverCommandID());
-		}
-		else
-		{
-			suites.CommandSuite1()->AEGP_DisableCommand(info->getCommandID());
-			suites.CommandSuite1()->AEGP_DisableCommand(info->getForeverCommandID());
-		}
+		suites.CommandSuite1()->AEGP_EnableCommand(info->getCommandID());
+		suites.CommandSuite1()->AEGP_EnableCommand(info->getForeverCommandID());
+	}
+	else
+	{
+		suites.CommandSuite1()->AEGP_DisableCommand(info->getCommandID());
+		suites.CommandSuite1()->AEGP_DisableCommand(info->getForeverCommandID());
 	}
 	
 	if (info->getActiveCompH() != NULL)

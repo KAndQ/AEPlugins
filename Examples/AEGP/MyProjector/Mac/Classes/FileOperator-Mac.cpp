@@ -35,29 +35,32 @@ void FileOperator_Mac::saveAnimationData(bool forever)
 
 void FileOperator_Mac::saveMoudleData()
 {
-	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-	
-	A_long width, height;
-	obtainCompositionItemDimensions(&width, &height);
-	
-	NSMutableDictionary * moudleDict = [[NSMutableDictionary alloc] init];
-	[moudleDict setObject:NSStringFromSize(CGSizeMake(width, height)) forKey:@"Size"];
-	[moudleDict setObject:NSStringFromPoint(CGPointMake(0.5, 0.5f)) forKey:@"AnchorPoint"];		// 默认 (0.5, 0.5), 需要手动在文件里调整, 没有在 AE 里面做控制面板
-	
-	// 将文件保存在与当前 AE 项目相同的路径处, 文件名是 Module_[ProjectName]_[CompositionName].plist
-	A_UTF16Char * utf16ProjPath = AnimatorPluginInfo::shared()->getProjectPath();
-	A_UTF16Char * utf16ItemName = obtainActiveItemName();
-	NSString * projPath = NSStringFromA_UTF16Char(utf16ProjPath);
-	NSString * projName = [[projPath lastPathComponent] stringByDeletingPathExtension];
-	projPath = [projPath stringByDeletingLastPathComponent];
-	NSString * itemName = NSStringFromA_UTF16Char(utf16ItemName);
-	NSString * moudlePath = [NSString stringWithFormat:@"%@/Moudle_%@_%@.plist", projPath, projName, itemName];
-	[moudleDict writeToFile:moudlePath atomically:YES];
-	
-	delete utf16ProjPath, utf16ProjPath = NULL;
-	delete utf16ItemName, utf16ItemName = NULL;
-	[moudleDict release];
-	[pool release];
+	if (AnimatorPluginInfo::shared()->getActiveCompH() != NULL)
+	{
+		NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+		
+		A_long width, height;
+		obtainCompositionItemDimensions(&width, &height);
+		
+		NSMutableDictionary * moudleDict = [[NSMutableDictionary alloc] init];
+		[moudleDict setObject:NSStringFromSize(CGSizeMake(width, height)) forKey:@"Size"];
+		[moudleDict setObject:NSStringFromPoint(CGPointMake(0.5, 0.5f)) forKey:@"AnchorPoint"];		// 默认 (0.5, 0.5), 需要手动在文件里调整, 没有在 AE 里面做控制面板
+		
+		// 将文件保存在与当前 AE 项目相同的路径处, 文件名是 Module_[ProjectName]_[CompositionName].plist
+		A_UTF16Char * utf16ProjPath = AnimatorPluginInfo::shared()->getProjectPath();
+		A_UTF16Char * utf16ItemName = obtainActiveItemName();
+		NSString * projPath = NSStringFromA_UTF16Char(utf16ProjPath);
+		NSString * projName = [[projPath lastPathComponent] stringByDeletingPathExtension];
+		projPath = [projPath stringByDeletingLastPathComponent];
+		NSString * itemName = NSStringFromA_UTF16Char(utf16ItemName);
+		NSString * moudlePath = [NSString stringWithFormat:@"%@/Moudle_%@_%@.plist", projPath, projName, itemName];
+		[moudleDict writeToFile:moudlePath atomically:YES];
+		
+		delete utf16ProjPath, utf16ProjPath = NULL;
+		delete utf16ItemName, utf16ItemName = NULL;
+		[moudleDict release];
+		[pool release];
+	}
 }
 
 void FileOperator_Mac::saveAllData(bool forever)
@@ -67,15 +70,18 @@ void FileOperator_Mac::saveAllData(bool forever)
 	// 导出全部图层的动画数据
 	A_Err err = A_Err_NONE;
 	AEGP_CompH compH = AnimatorPluginInfo::shared()->getActiveCompH();
-	AEGP_SuiteHandler suites(AnimatorPluginInfo::shared()->getBasicSuite());
-	A_long numLayers;	
-	ERR(suites.LayerSuite7()->AEGP_GetCompNumLayers(compH, &numLayers));
-	for (A_long i = 0; i < numLayers && err == A_Err_NONE; ++i)
+	if (compH != NULL)
 	{
-		AEGP_LayerH layer = NULL;
-		ERR(suites.LayerSuite7()->AEGP_GetCompLayerByIndex(compH, i, &layer));
-		if (layer != NULL)
-			saveAnimationData(layer, forever);
+		AEGP_SuiteHandler suites(AnimatorPluginInfo::shared()->getBasicSuite());
+		A_long numLayers;	
+		ERR(suites.LayerSuite7()->AEGP_GetCompNumLayers(compH, &numLayers));
+		for (A_long i = 0; i < numLayers && err == A_Err_NONE; ++i)
+		{
+			AEGP_LayerH layer = NULL;
+			ERR(suites.LayerSuite7()->AEGP_GetCompLayerByIndex(compH, i, &layer));
+			if (layer != NULL)
+				saveAnimationData(layer, forever);
+		}
 	}
 }
 

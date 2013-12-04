@@ -80,6 +80,21 @@ static void packFadeTo(AEGP_OneDVal * pOneVals, float * pTimes, A_long index, NS
 	[animDict setObject:[NSNumber numberWithFloat:pOneVals[index]] forKey:@"Opacity"];
 }
 
+/// 比较总时间, 记录最长的时间
+static void compareSumTime(NSMutableDictionary * mainDict, float * pTimes, A_long number)
+{
+	float sumTime = 0.0f;
+	for (A_long i = 0; i < number; ++i)
+		sumTime += pTimes[i];
+	
+	float tmp = [[mainDict objectForKey:@"SumTime"] floatValue];
+	
+	if (sumTime > tmp)
+	{
+		[mainDict setObject:[NSNumber numberWithFloat:sumTime] forKey:@"SumTime"];
+	}
+}
+
 AnimDataPacker::AnimDataPacker(DataPacker * packer, NSMutableDictionary * dict, bool forever) : DataPacker(packer)
 {
 	m_forever = forever;
@@ -99,6 +114,8 @@ void AnimDataAnchorPointPacker::pack(AEGP_LayerH layer)
 	float * pTimes = NULL;
 	A_long numkfs = 0;
 	obtainKeyframesAnchorPointDataWithPercent(layer, &pTwoVals, &pTimes, &numkfs);
+	
+	compareSumTime(m_dict, pTimes, numkfs);
 	
 	// 没有动画则直接返回, 解析的时候直接判断如果 key AnchorPoint 返回的值是 nil 则表示没有动画
 	if (numkfs == 0)
@@ -141,6 +158,8 @@ void AnimDataPositionPacker::pack(AEGP_LayerH layer)
 	A_long numkfs = 0;
 	obtainKeyframesPositionData(layer, &pTwoVals, &pTimes, &numkfs);
 	
+	compareSumTime(m_dict, pTimes, numkfs);
+	
 	if (numkfs == 0)
 	{
 		return;
@@ -178,6 +197,8 @@ void AnimDataScalePacker::pack(AEGP_LayerH layer)
 	float * pTimes = NULL;
 	A_long numkfs = 0;
 	obtainKeyframesScaleData(layer, &pTwoVals, &pTimes, &numkfs);
+	
+	compareSumTime(m_dict, pTimes, numkfs);
 	
 	if (numkfs == 0)
 	{
@@ -217,6 +238,8 @@ void AnimDataRotationPacker::pack(AEGP_LayerH layer)
 	A_long numkfs = 0;
 	obtainKeyframesRotationData(layer, &pOneVals, &pTimes, &numkfs);
 	
+	compareSumTime(m_dict, pTimes, numkfs);
+	
 	if (numkfs == 0)
 	{
 		return;
@@ -254,6 +277,8 @@ void AnimDataOpacityPacker::pack(AEGP_LayerH layer)
 	float * pTimes = NULL;
 	A_long numkfs = 0;
 	obtainKeyframesOpacityData(layer, &pOneVals, &pTimes, &numkfs);
+	
+	compareSumTime(m_dict, pTimes, numkfs);
 	
 	if (numkfs == 0)
 	{

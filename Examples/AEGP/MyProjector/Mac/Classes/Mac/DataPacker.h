@@ -12,7 +12,7 @@
 #include "AE_GeneralPlug.h"
 
 /**
- * 数据打包器, InitDataPacker 和 AnimDataPacker 数据打包的机器
+ * 数据打包器, InitDataPacker 和 AnimDataPacker 数据打包的基类, 这里用的是装饰者模式
  * @author Zhenyu Yao
  */
 class DataPacker

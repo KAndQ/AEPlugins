@@ -115,6 +115,31 @@ void FileOperator_Mac::saveAnimationData(AEGP_LayerH layer, bool forever)
 	AnimDataRotationPacker animRotationPacker = AnimDataRotationPacker(&animScalePacker, animDataDict, forever);
 	AnimDataOpacityPacker animOpacityPacker = AnimDataOpacityPacker(&animRotationPacker, animDataDict, forever);
 	animOpacityPacker.pack(layer);
+    
+    // 记录当前是否是循环播放模式
+    [animDataDict setObject:[NSNumber numberWithBool:forever] forKey:@"Forever"];
+    
+    // 创建 Delay Action
+    A_Err err = A_Err_NONE;
+    AnimatorPluginInfo * info = AnimatorPluginInfo::shared();
+    AEGP_SuiteHandler suites(info->getBasicSuite());
+    A_Time time;
+    ERR(suites.LayerSuite7()->AEGP_GetLayerOffset(layer, &time));
+    float offset = obtainDurationInSecond(time);
+    
+    if (offset != 0)
+    {
+        NSMutableDictionary * delayDict = [[NSMutableDictionary alloc] init];
+        [animDataDict setObject:delayDict forKey:@"Delay"];
+        [delayDict setObject:@"DelayTime" forKey:@"Type"];
+        [delayDict setObject:[NSNumber numberWithFloat:offset] forKey:@"Duration"];
+        [delayDict release];
+        
+        // 修改 SumTime 时间
+        float sumTime = [[animDataDict objectForKey:@"SumTime"] floatValue];
+        sumTime += offset;
+        [animDataDict setObject:[NSNumber numberWithFloat:sumTime] forKey:@"SumTime"];
+    }
 	
 	// 将文件保存在与当前 AE 项目相同的路径处, 文件名是 Anim_[ProjectName]_[CompositionName]_[LayerName].plist
 	A_UTF16Char * utfProjectName = AnimatorPluginInfo::shared()->getProjectPath();

@@ -62,6 +62,16 @@ A_UTF16Char * obtainActiveItemName()
 	return name;
 }
 
+float getLayerOffset(AEGP_LayerH layer)
+{
+    A_Err err = A_Err_NONE;
+    AnimatorPluginInfo * info = AnimatorPluginInfo::shared();
+    AEGP_SuiteHandler suites(info->getBasicSuite());
+    A_Time time;
+    ERR(suites.LayerSuite7()->AEGP_GetLayerOffset(layer, &time));
+    return obtainDurationInSecond(time);
+}
+
 static void obtainLayerTimeInitData(AEGP_LayerH layerH, AEGP_StreamVal2 * pVal2, AEGP_LayerStream whichStream)
 {
 	AnimatorPluginInfo * info = AnimatorPluginInfo::shared();

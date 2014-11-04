@@ -17,9 +17,6 @@ extern A_UTF16Char * UTF16CharDuplicate(AEGP_MemorySuite1 * memSuite, AEGP_MemHa
 /// 把 A_Time 的 value 转化为以秒为单位的时间
 extern float obtainDurationInSecond(A_Time time);
 
-/// 把 A_Time 的 scale 转化为 FPS
-extern float obtainFrameratePerSecond(A_Time time);
-
 /// 获得 Layer 对应的资源大小, 如果没有当前没有选中 layer, 则  *pWidth, *pHeight 都为 0
 extern void obtainSourceItemDimensions(AEGP_LayerH layer, A_long * pWidth, A_long * pHeight);
 
@@ -31,6 +28,9 @@ extern A_UTF16Char * obtainLayerName(AEGP_LayerH layer);
 
 /// 获得当前激活的 Composition 名字, 需要手动 delete 删除返回的数据
 extern A_UTF16Char * obtainActiveItemName();
+
+/// 获得 layer 的 offset time
+extern float getLayerOffset(AEGP_LayerH layer);
 
 // [[[[
 

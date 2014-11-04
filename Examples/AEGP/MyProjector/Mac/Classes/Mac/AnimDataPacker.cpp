@@ -9,6 +9,10 @@
 #include "AnimDataPacker.h"
 #include "CommonUtils.h"
 
+#include "AEGP_SuiteHandler.h"
+#include "AnimatorPluginInfo.h"
+#include "CommonUtils.h"
+
 #ifdef AE_OS_MAC
 
 /// 创建定义动画的 NSMutableDictionary 对象, 需要手动 release 返回的 NSMutableDictionary 对象
@@ -37,6 +41,16 @@ static NSMutableArray * createActionsArray(NSMutableDictionary * animDict)
 	NSMutableArray * actionsArray = [[NSMutableArray alloc] init];
 	[animDict setObject:actionsArray forKey:@"Actions"];
 	return actionsArray;
+}
+
+/// 打包 DelayTime Action
+static void packDelayAction(AEGP_LayerH layer, NSMutableDictionary * dict, float offset)
+{
+    if (offset != 0)
+    {
+        [dict setObject:@"DelayTime" forKey:@"Type"];
+        [dict setObject:[NSNumber numberWithFloat:offset] forKey:@"Duration"];
+    }
 }
 
 /// 打包 AnchorPointTo Action
@@ -86,7 +100,7 @@ static void compareSumTime(NSMutableDictionary * mainDict, float * pTimes, A_lon
 	float sumTime = 0.0f;
 	for (A_long i = 0; i < number; ++i)
 		sumTime += pTimes[i];
-	
+    
 	float tmp = [[mainDict objectForKey:@"SumTime"] floatValue];
 	
 	if (sumTime > tmp)
@@ -116,7 +130,7 @@ void AnimDataAnchorPointPacker::pack(AEGP_LayerH layer)
 	obtainKeyframesAnchorPointDataWithPercent(layer, &pTwoVals, &pTimes, &numkfs);
 	
 	compareSumTime(m_dict, pTimes, numkfs);
-	
+    
 	// 没有动画则直接返回, 解析的时候直接判断如果 key AnchorPoint 返回的值是 nil 则表示没有动画
 	if (numkfs == 0)
 	{
@@ -125,15 +139,44 @@ void AnimDataAnchorPointPacker::pack(AEGP_LayerH layer)
 	
 	// 创建 AnchorPoint 类型动画
 	NSMutableDictionary * animDict = createAnimDict(m_dict, @"AnchorPoint", m_forever);
-	
+    
 	// 如果只有一帧, 那么则直接定义其动画, 而不使用 CCSequence
 	if (numkfs == 1)
 	{
-		packAnchorPointTo(pTwoVals, pTimes, 0, animDict);
+        float offset = getLayerOffset(layer);
+        if (offset == 0.0f)
+        {
+            packAnchorPointTo(pTwoVals, pTimes, 0, animDict);
+        }
+        else
+        {
+            NSMutableArray * dicts = createActionsArray(animDict);
+            
+            NSMutableDictionary * dict = [[NSMutableDictionary alloc] init];
+            packDelayAction(layer, dict, offset);
+            [dicts addObject:dict];
+            [dict release];
+            
+            dict = [[NSMutableDictionary alloc] init];
+            packAnchorPointTo(pTwoVals, pTimes, 0, dict);
+            [dicts addObject:dict];
+            [dict release];
+            
+            [dicts release];
+        }
 	}
 	else
 	{
 		NSMutableArray * actionsArray = createActionsArray(animDict);
+        
+        float offset = getLayerOffset(layer);
+        if (offset != 0.0f)
+        {
+            NSMutableDictionary * dict = [[NSMutableDictionary alloc] init];
+            packDelayAction(layer, dict, offset);
+            [actionsArray addObject:dict];
+        }
+        
 		for (A_long i = 0; i < numkfs; ++i)
 		{
 			NSMutableDictionary * actionDict = [[NSMutableDictionary alloc] init];
@@ -169,11 +212,40 @@ void AnimDataPositionPacker::pack(AEGP_LayerH layer)
 	
 	if (numkfs == 1)
 	{
-		packMoveTo(pTwoVals, pTimes, 0, animDict);
+        float offset = getLayerOffset(layer);
+        if (offset == 0.0f)
+        {
+            packMoveTo(pTwoVals, pTimes, 0, animDict);
+        }
+        else
+        {
+            NSMutableArray * dicts = createActionsArray(animDict);
+            
+            NSMutableDictionary * dict = [[NSMutableDictionary alloc] init];
+            packDelayAction(layer, dict, offset);
+            [dicts addObject:dict];
+            [dict release];
+            
+            dict = [[NSMutableDictionary alloc] init];
+            packMoveTo(pTwoVals, pTimes, 0, dict);
+            [dicts addObject:dict];
+            [dict release];
+            
+            [dicts release];
+        }
 	}
 	else
 	{
 		NSMutableArray * actionsArray = createActionsArray(animDict);
+        
+        float offset = getLayerOffset(layer);
+        if (offset != 0.0f)
+        {
+            NSMutableDictionary * dict = [[NSMutableDictionary alloc] init];
+            packDelayAction(layer, dict, offset);
+            [actionsArray addObject:dict];
+        }
+        
 		for (A_long i = 0; i < numkfs; ++i)
 		{
 			NSMutableDictionary * actionDict = [[NSMutableDictionary alloc] init];
@@ -197,23 +269,52 @@ void AnimDataScalePacker::pack(AEGP_LayerH layer)
 	float * pTimes = NULL;
 	A_long numkfs = 0;
 	obtainKeyframesScaleData(layer, &pTwoVals, &pTimes, &numkfs);
-	
+    
 	compareSumTime(m_dict, pTimes, numkfs);
-	
+    
 	if (numkfs == 0)
 	{
 		return;
 	}
 	
 	NSMutableDictionary * animDict = createAnimDict(m_dict, @"Scale", m_forever);
-	
+    
 	if (numkfs == 1)
 	{
-		packScaleTo(pTwoVals, pTimes, 0, animDict);
+        float offset = getLayerOffset(layer);
+        if (offset == 0.0f)
+        {
+            packScaleTo(pTwoVals, pTimes, 0, animDict);
+        }
+        else
+        {
+            NSMutableArray * dicts = createActionsArray(animDict);
+            
+            NSMutableDictionary * dict = [[NSMutableDictionary alloc] init];
+            packDelayAction(layer, dict, offset);
+            [dicts addObject:dict];
+            [dict release];
+            
+            dict = [[NSMutableDictionary alloc] init];
+            packScaleTo(pTwoVals, pTimes, 0, dict);
+            [dicts addObject:dict];
+            [dict release];
+            
+            [dicts release];
+        }
 	}
 	else
 	{
 		NSMutableArray * actionsArray = createActionsArray(animDict);
+        
+        float offset = getLayerOffset(layer);
+        if (offset != 0.0f)
+        {
+            NSMutableDictionary * dict = [[NSMutableDictionary alloc] init];
+            packDelayAction(layer, dict, offset);
+            [actionsArray addObject:dict];
+        }
+        
 		for (A_long i = 0; i < numkfs; ++i)
 		{
 			NSMutableDictionary * actionDict = [[NSMutableDictionary alloc] init];
@@ -249,11 +350,40 @@ void AnimDataRotationPacker::pack(AEGP_LayerH layer)
 	
 	if (numkfs == 1)
 	{
-		packRotateTo(pOneVals, pTimes, 0, animDict);
+        float offset = getLayerOffset(layer);
+        if (offset == 0.0f)
+        {
+            packRotateTo(pOneVals, pTimes, 0, animDict);
+        }
+        else
+        {
+            NSMutableArray * dicts = createActionsArray(animDict);
+            
+            NSMutableDictionary * dict = [[NSMutableDictionary alloc] init];
+            packDelayAction(layer, dict, offset);
+            [dicts addObject:dict];
+            [dict release];
+            
+            dict = [[NSMutableDictionary alloc] init];
+            packRotateTo(pOneVals, pTimes, 0, animDict);
+            [dicts addObject:dict];
+            [dict release];
+            
+            [dicts release];
+        }
 	}
 	else
 	{
 		NSMutableArray * actionsArray = createActionsArray(animDict);
+        
+        float offset = getLayerOffset(layer);
+        if (offset != 0.0f)
+        {
+            NSMutableDictionary * dict = [[NSMutableDictionary alloc] init];
+            packDelayAction(layer, dict, offset);
+            [actionsArray addObject:dict];
+        }
+        
 		for (A_long i = 0; i < numkfs; ++i)
 		{
 			NSMutableDictionary * actionDict = [[NSMutableDictionary alloc] init];
@@ -289,11 +419,40 @@ void AnimDataOpacityPacker::pack(AEGP_LayerH layer)
 	
 	if (numkfs == 1)
 	{
-		packFadeTo(pOneVals, pTimes, 0, animDict);
+        float offset = getLayerOffset(layer);
+        if (offset == 0.0f)
+        {
+            packFadeTo(pOneVals, pTimes, 0, animDict);
+        }
+        else
+        {
+            NSMutableArray * dicts = createActionsArray(animDict);
+            
+            NSMutableDictionary * dict = [[NSMutableDictionary alloc] init];
+            packDelayAction(layer, dict, offset);
+            [dicts addObject:dict];
+            [dict release];
+            
+            dict = [[NSMutableDictionary alloc] init];
+            packFadeTo(pOneVals, pTimes, 0, animDict);
+            [dicts addObject:dict];
+            [dict release];
+            
+            [dicts release];
+        }
 	}
 	else
 	{
 		NSMutableArray * actionsArray = createActionsArray(animDict);
+        
+        float offset = getLayerOffset(layer);
+        if (offset != 0.0f)
+        {
+            NSMutableDictionary * dict = [[NSMutableDictionary alloc] init];
+            packDelayAction(layer, dict, offset);
+            [actionsArray addObject:dict];
+        }
+        
 		for (A_long i = 0; i < numkfs; ++i)
 		{
 			NSMutableDictionary * actionDict = [[NSMutableDictionary alloc] init];

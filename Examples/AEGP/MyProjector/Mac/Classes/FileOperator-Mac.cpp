@@ -120,13 +120,7 @@ void FileOperator_Mac::saveAnimationData(AEGP_LayerH layer, bool forever)
     [animDataDict setObject:[NSNumber numberWithBool:forever] forKey:@"Forever"];
     
     // 创建 Delay Action
-    A_Err err = A_Err_NONE;
-    AnimatorPluginInfo * info = AnimatorPluginInfo::shared();
-    AEGP_SuiteHandler suites(info->getBasicSuite());
-    A_Time time;
-    ERR(suites.LayerSuite7()->AEGP_GetLayerOffset(layer, &time));
-    float offset = obtainDurationInSecond(time);
-    
+    float offset = getLayerOffset(layer);
     if (offset != 0)
     {
         NSMutableDictionary * delayDict = [[NSMutableDictionary alloc] init];

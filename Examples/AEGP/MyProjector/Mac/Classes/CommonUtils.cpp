@@ -68,7 +68,8 @@ float getLayerOffset(AEGP_LayerH layer)
     AnimatorPluginInfo * info = AnimatorPluginInfo::shared();
     AEGP_SuiteHandler suites(info->getBasicSuite());
     A_Time time;
-    ERR(suites.LayerSuite7()->AEGP_GetLayerOffset(layer, &time));
+//    ERR(suites.LayerSuite7()->AEGP_GetLayerOffset(layer, &time));
+    ERR(suites.LayerSuite7()->AEGP_GetLayerInPoint(layer, AEGP_LTimeMode_CompTime, &time));
     return obtainDurationInSecond(time);
 }
 
